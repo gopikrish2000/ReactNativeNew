@@ -28,7 +28,7 @@ export default class SecondReactClass extends Component {
                 </Text>
                 <Button onPress={this.onPressButton} title="Button 1"/>
 
-                <MyListView abc="2"/>
+                <MyListView url = "https://facebook.github.io/react-native/movies.json" />
             </View>
         );
     }
@@ -66,6 +66,20 @@ class MyListView extends Component {
     constructor(props) {
         super(props);
         this.state = {isLoading: true, dataList: []};
+        this.fetchFromNetwork()
+    }
+
+    fetchFromNetwork() {
+        fetch(this.props.url).then((response) => response.json()).then((jsonObj) => jsonObj["movies"]).then((json) => {
+            // console.log(" json is " + json);
+            this.setState({
+                dataList: json
+            }, () => {
+
+            });
+        }).catch((exception) => {
+            console.error(exception);
+        });
     }
 
     render(): * {
@@ -73,12 +87,8 @@ class MyListView extends Component {
             <View>
                 <Text> Sample view </Text>
 
-                <FlatList data={[{ "name": "gopi", "age": 20}, {
-                    "name": "krishna",
-                    "age": 24
-                }, { "name": "abc", "age": 30}
-                ]} keyExtractor = {(item, index) => item.name}
-                          renderItem={({item}) => <Text> name is {item.name} , age is {item.age} </Text>}
+                <FlatList data={this.state.dataList} keyExtractor = {(item, index) => index+ ""}
+                          renderItem={({item}) => <Text> movie tilte is {item.title} , release year is {item.releaseYear} </Text>}
                 />
 
             </View>
