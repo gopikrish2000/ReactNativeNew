@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TextInput, Button, Alert , StyleSheet, AppRegistry} from 'react-native';
+import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry} from 'react-native';
 
 
 export default class SecondReactClass extends Component {
@@ -27,12 +27,14 @@ export default class SecondReactClass extends Component {
                     The text is {this.state.text}
                 </Text>
                 <Button onPress={this.onPressButton} title="Button 1"/>
-                <FetchFromNetworkClass url = "https://facebook.github.io/react-native/movies.json" />
+
+                <MyListView abc="2"/>
             </View>
         );
     }
 };
 
+/* <FetchFromNetworkClass url = "https://facebook.github.io/react-native/movies.json" />*/
 class FetchFromNetworkClass extends Component {
     constructor(props) {
         super(props);
@@ -56,6 +58,30 @@ class FetchFromNetworkClass extends Component {
     render(): * {
         return (
             <Text> Json response is {this.state.jsonResponse} </Text>
+        );
+    }
+}
+
+class MyListView extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {isLoading: true, dataList: []};
+    }
+
+    render(): * {
+        return (
+            <View>
+                <Text> Sample view </Text>
+
+                <FlatList data={[{ "name": "gopi", "age": 20}, {
+                    "name": "krishna",
+                    "age": 24
+                }, { "name": "abc", "age": 30}
+                ]} keyExtractor = {(item, index) => item.name}
+                          renderItem={({item}) => <Text> name is {item.name} , age is {item.age} </Text>}
+                />
+
+            </View>
         );
     }
 }
