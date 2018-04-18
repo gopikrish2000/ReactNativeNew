@@ -28,6 +28,7 @@ public class ReactInstanceFactory {
         if (mReactInstanceManager == null) {
             mReactInstanceManager = ReactInstanceManager.builder().addPackage(new MainReactPackage()).setApplication(MainApplication.getInstance())
                     .setJSBundleFile("assets://index.android.bundle").setUseDeveloperSupport(BuildConfig.DEBUG).setInitialLifecycleState(LifecycleState.RESUMED).build();
+           // mReactInstanceManager.getDevSupportManager().handleReloadJS();
         }
         return mReactInstanceManager;
     }

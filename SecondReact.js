@@ -16,9 +16,11 @@ export default class SecondReactClass extends Component {
         return (
             <View>
                 <TextInput style={{height: 50}} placeholder=" This is text input" onChangeText={(txt) => {
-                    this.setState((previous) => {
+                    /*this.setState((previous) => {
                         return (this.state.text: txt);
-                    });
+                    });*/
+                    this.setState( {text: txt});
+
                     /*this.setState({txt});*/
                     /*this.state = {text: txt};*/
                 }}> </TextInput>
@@ -29,7 +31,7 @@ export default class SecondReactClass extends Component {
                 <Button onPress={this.onPressButton} title="Button 1"/>
 
                 <MyListView url="https://facebook.github.io/react-native/movies.json"/>
-                <MyLongRunningTask />
+                <MyLongRunningTask text={this.state.text} />
             </View>
         );
     }
@@ -70,6 +72,28 @@ class MyListView extends Component {
         this.fetchFromNetwork()
     }
 
+    componentDidMount() {
+        console.log("ComponentDidMount MyLongRunningTask");
+    }
+
+    componentWillUnmount() {
+        console.log("ComponentDidUNMount MyLongRunningTask");
+    }
+
+    componentDidUpdate() {
+        console.log("ComponentDidUpdate MyLongRunningTask");
+    }
+
+    /*componentWillMount() {   // deprecated
+        console.log("ComponentWillMount MyLongRunningTask");
+    }*/
+
+
+
+    /* componentWillUpdate() {   // deprecated
+         console.log("ComponentWillUpdate MyLongRunningTask");
+     }*/
+
     fetchFromNetwork() {
         fetch(this.props.url).then((response) => response.json()).then((jsonObj) => jsonObj["movies"]).then((json) => {
             // console.log(" json is " + json);
@@ -109,37 +133,11 @@ class MyLongRunningTask extends Component {
         /*setTimeout(() => {
             console.log("Time out called")
         }, 500);*/
-        // this.abc("sad");
     }
-
-   /* abc(n: number) {
-
-    }
-*/
-    /*componentWillMount() {   // deprecated
-        console.log("ComponentWillMount MyLongRunningTask");
-    }*/
-
-    componentDidMount() {
-        console.log("ComponentDidMount MyLongRunningTask");
-    }
-
-    componentWillUnmount() {
-        console.log("ComponentDidUNMount MyLongRunningTask");
-    }
-
-   /* componentWillUpdate() {   // deprecated
-        console.log("ComponentWillUpdate MyLongRunningTask");
-    }*/
-
-    componentDidUpdate() {
-        console.log("ComponentDidUpdate MyLongRunningTask");
-    }
-
 
     render(): * {
         return (
-            <Text> MyLongRunningTask </Text>
+            <Text> MyLongRunningTask with prop txt {this.props.text} </Text>
         );
     }
 }
