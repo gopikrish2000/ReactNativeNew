@@ -28,7 +28,8 @@ export default class SecondReactClass extends Component {
                 </Text>
                 <Button onPress={this.onPressButton} title="Button 1"/>
 
-                <MyListView url = "https://facebook.github.io/react-native/movies.json" />
+                <MyListView url="https://facebook.github.io/react-native/movies.json"/>
+                <MyLongRunningTask />
             </View>
         );
     }
@@ -87,11 +88,58 @@ class MyListView extends Component {
             <View>
                 <Text> Sample view </Text>
 
-                <FlatList data={this.state.dataList} keyExtractor = {(item, index) => index+ ""}
-                          renderItem={({item}) => <Text> movie tilte is {item.title} , release year is {item.releaseYear} </Text>}
+                <FlatList data={this.state.dataList} keyExtractor={(item, index) => index + ""}
+                          renderItem={({item}) => <Text> movie tilte is {item.title} , release year
+                              is {item.releaseYear} </Text>}
                 />
 
             </View>
+        );
+    }
+}
+
+/* lifecycle CREATION order is  componentWillMount -> Render -> componentDidMount -> componentWillUnmount ( when destroyed)
+
+*  lifecycle UPDATION order is  shouldComponentUpdate -> componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> Render -> componentDidUpdate
+* */
+class MyLongRunningTask extends Component {
+
+    constructor(props) {
+        super(props);
+        /*setTimeout(() => {
+            console.log("Time out called")
+        }, 500);*/
+        // this.abc("sad");
+    }
+
+   /* abc(n: number) {
+
+    }
+*/
+    /*componentWillMount() {   // deprecated
+        console.log("ComponentWillMount MyLongRunningTask");
+    }*/
+
+    componentDidMount() {
+        console.log("ComponentDidMount MyLongRunningTask");
+    }
+
+    componentWillUnmount() {
+        console.log("ComponentDidUNMount MyLongRunningTask");
+    }
+
+   /* componentWillUpdate() {   // deprecated
+        console.log("ComponentWillUpdate MyLongRunningTask");
+    }*/
+
+    componentDidUpdate() {
+        console.log("ComponentDidUpdate MyLongRunningTask");
+    }
+
+
+    render(): * {
+        return (
+            <Text> MyLongRunningTask </Text>
         );
     }
 }
