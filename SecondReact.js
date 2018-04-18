@@ -12,6 +12,12 @@ export default class SecondReactClass extends Component {
         Alert.alert("Button clicked");
     }
 
+    changeStateOfText() {
+        this.setState((prev) => {
+                return {text: prev.text + 'sdf'};
+        });
+    }
+
     render(): * {
         return (
             <View>
@@ -31,7 +37,7 @@ export default class SecondReactClass extends Component {
                 <Button onPress={this.onPressButton} title="Button 1"/>
 
                 <MyListView url="https://facebook.github.io/react-native/movies.json"/>
-                <MyLongRunningTask text={this.state.text} />
+                <MyLongRunningTask text={this.state.text} changeFunc={this.changeStateOfText} />
             </View>
         );
     }
@@ -135,9 +141,16 @@ class MyLongRunningTask extends Component {
         }, 500);*/
     }
 
+    onPressMyButton(){
+        this.props.changeFunc();
+    }
+
     render(): * {
         return (
-            <Text> MyLongRunningTask with prop txt {this.props.text} </Text>
+            <View>
+                <Text> MyLongRunningTask with prop txt {this.props.text} </Text>
+                <Button title="Change Parent state" onPress={this.onPressMyButton} />
+            </View>
         );
     }
 }
