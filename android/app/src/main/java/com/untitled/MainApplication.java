@@ -13,6 +13,8 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
+  private static MainApplication instance;
+
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
     public boolean getUseDeveloperSupport() {
@@ -40,6 +42,11 @@ public class MainApplication extends Application implements ReactApplication {
   @Override
   public void onCreate() {
     super.onCreate();
+    instance = this;
     SoLoader.init(this, /* native exopackage */ false);
+  }
+
+  public static MainApplication getInstance() {
+    return instance;
   }
 }
