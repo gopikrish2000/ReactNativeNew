@@ -140,11 +140,27 @@ class MyLongRunningTask extends Component {
         /*setTimeout(() => {
             console.log("Time out called")
         }, 500);*/
+        /*this.checkPromiseMethod(5).then(str =>  {
+            Alert.alert(str + "");
+        }).catch((reason => {
+            Alert.alert(reason + " reject REASON");
+        }));*/
     }
 
     onPressMyButton(e){
         console.log(this.props.text);
         this.props.changeFunc();
+    }
+
+    checkPromiseMethod(val){
+        let a = 20;
+        return new Promise((resolve, reject) => {
+            if(val > 10){
+                resolve("success value greater then 10");
+            } else {
+                reject("failure value should be greater then 10")
+            }
+        });
     }
 
     render(): * {
