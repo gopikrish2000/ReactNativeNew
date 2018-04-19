@@ -5,11 +5,12 @@ import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry}
 export default class SecondReactClass extends Component {
     constructor(props) {
         super(props);
-        this.state = {text: ''};
+        this.state = {text: 'asdf'};
     }
 
-    onPressButton() {
-        Alert.alert("Button clicked");
+    onPressButton(e) {
+        Alert.alert("Button clicked with data " + this.state.text);
+
     }
 
     changeStateOfText() {
@@ -34,10 +35,10 @@ export default class SecondReactClass extends Component {
                 <Text>
                     The text is {this.state.text}
                 </Text>
-                <Button onPress={this.onPressButton} title="Button 1"/>
+                <Button onPress={(e) => this.onPressButton(e)} title="Button 1"/>
 
                 <MyListView url="https://facebook.github.io/react-native/movies.json"/>
-                <MyLongRunningTask text={this.state.text} changeFunc={this.changeStateOfText} />
+                <MyLongRunningTask text={this.state.text} changeFunc={this.changeStateOfText.bind(this)} />
             </View>
         );
     }
@@ -141,7 +142,8 @@ class MyLongRunningTask extends Component {
         }, 500);*/
     }
 
-    onPressMyButton(){
+    onPressMyButton(e){
+        console.log(this.props.text);
         this.props.changeFunc();
     }
 
@@ -149,7 +151,7 @@ class MyLongRunningTask extends Component {
         return (
             <View>
                 <Text> MyLongRunningTask with prop txt {this.props.text} </Text>
-                <Button title="Change Parent state" onPress={this.onPressMyButton} />
+                <Button title="Change Parent state" onPress={(e) => this.onPressMyButton(e)} />
             </View>
         );
     }
