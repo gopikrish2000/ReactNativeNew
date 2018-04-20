@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry} from 'react-native';
-import App from './App';
-import FirstReact from './FirstReact';
-
-import { StackNavigator } from 'react-navigation';
-
 
 export default class SecondReactClass extends Component {
+    static navigationOptions = {
+        title: 'SecondReactClass',
+    };
     constructor(props) {
         super(props);
         this.state = {text: 'asdf'};

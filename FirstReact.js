@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet, AppRegistry} from 'react-native';
 
 export default class FirstClass extends Component {
+
+    static navigationOptions = {
+        title: 'FirstClass',
+    };
     render() {
         return (
             <View>
