@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry} from 'react-native';
+import App from './App';
+import FirstReact from './FirstReact';
+
+import { StackNavigator } from 'react-navigation';
 
 
 export default class SecondReactClass extends Component {
@@ -8,9 +12,9 @@ export default class SecondReactClass extends Component {
         this.state = {text: 'asdf'};
     }
 
-    onPressButton(e) {
-        Alert.alert("Button clicked with data " + this.state.text);
-
+    onPressButton() {
+        Alert.alert("Button clicked with data " + this.state.text + " props data "+ this.props);
+        this.props.navigation.navigate('Profile');
     }
 
     changeStateOfText() {
@@ -35,7 +39,7 @@ export default class SecondReactClass extends Component {
                 <Text>
                     The text is {this.state.text}
                 </Text>
-                <Button onPress={(e) => this.onPressButton(e)} title="Button 1"/>
+                <Button onPress={this.onPressButton.bind(this)} title="Button 1"/>
 
                 <MyListView url="https://facebook.github.io/react-native/movies.json"/>
                 <MyLongRunningTask text={this.state.text} changeFunc={this.changeStateOfText.bind(this)} />
@@ -148,8 +152,8 @@ class MyLongRunningTask extends Component {
     }
 
     onPressMyButton(e){
-        console.log(this.props.text);
-        this.props.changeFunc();
+        // console.log(this.props.text);
+        this.props.changeFunc();  // u can change call a function from props but use binded function or lambda expression function only.
     }
 
     checkPromiseMethod(val){
