@@ -93,15 +93,6 @@ class MyListView extends Component {
         console.log("ComponentDidUpdate MyLongRunningTask");
     }
 
-    /*componentWillMount() {   // deprecated
-        console.log("ComponentWillMount MyLongRunningTask");
-    }*/
-
-
-
-    /* componentWillUpdate() {   // deprecated
-         console.log("ComponentWillUpdate MyLongRunningTask");
-     }*/
 
     fetchFromNetwork() {
         fetch(this.props.url).then((response) => response.json()).then((jsonObj) => jsonObj["movies"]).then((json) => {
