@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {createStore} from 'redux';
-import {redoxReducerMain} from './RedoxFirst'
+import redoxReducerMain from './RedoxFirst'
 import {firstActionCommand, secondActionCommand, FIRST_ACTION, SECOND_ACTION} from './actions'
-
+import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry} from 'react-native';
 
 export default class RedoxStoreExample extends Component {
+
     static navigationOptions = {
         title: 'RedoxStoreExample',
     };
@@ -12,10 +13,12 @@ export default class RedoxStoreExample extends Component {
     constructor(props){
         super(props);
         this.redoxDispatchExample();
+
     }
 
     redoxDispatchExample(){
-        const myStore = createStore(redoxReducerMain, window.STATE_FROM_SERVER);
+        const store = createStore(redoxReducerMain, window.STATE_FROM_SERVER);
+
 
         console.log(store.getState());
 
@@ -29,4 +32,9 @@ export default class RedoxStoreExample extends Component {
         unsubscribe();
     }
 
+    render(): * {
+        return (
+            <Text> First check</Text>
+        );
+    }
 }
