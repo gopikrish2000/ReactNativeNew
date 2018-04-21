@@ -1,0 +1,32 @@
+import React, {Component} from 'react';
+import {createStore} from 'redux';
+import {redoxReducerMain} from './RedoxFirst'
+import {firstActionCommand, secondActionCommand, FIRST_ACTION, SECOND_ACTION} from './actions'
+
+
+export default class RedoxStoreExample extends Component {
+    static navigationOptions = {
+        title: 'RedoxStoreExample',
+    };
+
+    constructor(props){
+        super(props);
+        this.redoxDispatchExample();
+    }
+
+    redoxDispatchExample(){
+        const myStore = createStore(redoxReducerMain, window.STATE_FROM_SERVER);
+
+        console.log(store.getState());
+
+        const unsubscribe = store.subscribe(() =>
+            console.log(store.getState())
+        );
+
+        store.dispatch(firstActionCommand('Text1 Changed'));
+        store.dispatch(secondActionCommand('Text2 Changed'));
+
+        unsubscribe();
+    }
+
+}
