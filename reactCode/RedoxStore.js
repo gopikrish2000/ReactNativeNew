@@ -22,8 +22,11 @@ export default class RedoxStoreExample extends Component {
 
         console.log(store.getState());
 
-        const unsubscribe = store.subscribe(() =>
-            console.log(store.getState())
+        const unsubscribe = store.subscribe(() => {
+            console.log("state in subscriber is ");
+            console.log(store.getState());
+
+            }
         );
 
         store.dispatch(firstActionCommand('Text1 Changed'));

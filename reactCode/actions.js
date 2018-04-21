@@ -6,14 +6,14 @@ export const SECOND_ACTION = 'secondAction';
 export function firstActionCommand(param) {
     return {
         type: FIRST_ACTION,
-        param
+        text1: param
     }
 }
 
 export function secondActionCommand(param) {
     return {
         type: SECOND_ACTION,
-        param
+        text2: param
     }
 }
 

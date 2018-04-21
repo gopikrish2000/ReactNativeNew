@@ -8,27 +8,29 @@ currentState = {
 };
 
 
-function redoxChild1(previousState, action) {
+function redoxChild1(previousState = '', action) {
     switch (action) {
         case FIRST_ACTION : {
             // action.param
             return Object.assign({}, previousState, {
-                text1: action.param
+                text1: action.text1
             });
-            break;
         }
+        default:
+            return previousState;
     }
 }
 
-function redoxChild2(previousState, action) {
+function redoxChild2(previousState = '', action) {
     switch (action) {
         case SECOND_ACTION : {
             // action.param
             return Object.assign({}, previousState, {
-                text2: action.param
+                text2: action.text2
             });
-            break;
         }
+        default:
+            return previousState;
     }
 }
 
