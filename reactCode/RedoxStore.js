@@ -32,9 +32,10 @@ import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry}
         console.log(store.getState());
 
         store.dispatch(firstActionCommand('Text1 Changed'));
-        store.dispatch(secondActionCommand('Text2 Changed'));
+        // store.dispatch(secondActionCommand('Text2 Changed'));
 
         unsubscribe();
+
     }
 
     render(): * {
