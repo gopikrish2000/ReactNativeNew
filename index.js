@@ -5,14 +5,16 @@ import SecondReactClass from './SecondReact';
 import {StackNavigator} from "react-navigation";
 import {Component} from "react";
 import RedoxStoreExample from './reactCode/RedoxStore';
+import FirstAnimation from "./reactCode/FirstAnimation";
 
 const navigationConst = StackNavigator({
         RedoxFirst : {screen: RedoxStoreExample},
         Home: {screen: SecondReactClass},
+        FirstAnimation: {screen: FirstAnimation},
         Profile: {screen: App}
     },
     {
-        initialRouteName: 'RedoxFirst'
+        initialRouteName: 'FirstAnimation'
     });
 
 
