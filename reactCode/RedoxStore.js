@@ -4,7 +4,7 @@ import redoxReducerMain from './RedoxFirst'
 import {firstActionCommand, secondActionCommand, FIRST_ACTION, SECOND_ACTION} from './actions'
 import {Text, View, TextInput, Button, Alert, FlatList, StyleSheet, AppRegistry} from 'react-native';
 
-export default class RedoxStoreExample extends Component {
+ class RedoxStoreExample extends Component {
 
     static navigationOptions = {
         title: 'RedoxStoreExample',
@@ -29,6 +29,8 @@ export default class RedoxStoreExample extends Component {
             }
         );
 
+        console.log(store.getState());
+
         store.dispatch(firstActionCommand('Text1 Changed'));
         store.dispatch(secondActionCommand('Text2 Changed'));
 
@@ -41,3 +43,6 @@ export default class RedoxStoreExample extends Component {
         );
     }
 }
+
+
+export default RedoxStoreExample;
