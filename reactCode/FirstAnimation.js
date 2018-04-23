@@ -24,10 +24,18 @@ export default class FirstAnimation extends Component {
 
 
     render(): * {
+        const alphaInterpolate = this.state.firstAnim.interpolate({
+            inputRange: [10, 50, 100],
+            outputRange: [0.1, 0.5, 1]
+        });
+
         return (
             <View>
-                <Animated.View style ={{width:this.state.firstAnim, height:this.state.firstAnim, backgroundColor: 'blue'}} />
-                {/*<Text style={{opacity: this.state.firstAnim}}> firstAnimation </Text>*/}
+                <Animated.View
+                    style={{width: this.state.firstAnim, height: this.state.firstAnim, backgroundColor: 'blue'}}>
+                </Animated.View>
+
+                <Animated.View style={{width:50, height:50,backgroundColor: 'red', opacity: alphaInterpolate}} />
             </View>
         );
     }
