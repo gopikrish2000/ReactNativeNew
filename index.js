@@ -18,4 +18,5 @@ const navigationConst = StackNavigator({
     });
 
 
+
 AppRegistry.registerComponent('untitled', () => navigationConst);
