@@ -41,7 +41,7 @@ export default function redoxReducerMain(previousState = currentState, action) {
     console.log("Redox Main text param ");
 
 
-    return Object.assign({}, previousState,{
+    return Object.assign({}, previousState,{   // only one Object.assign otherwise it will create nesting.
         text1: redoxChild1( action),
         text2: redoxChild2(action)
     });
@@ -51,7 +51,7 @@ export default function redoxReducerMain(previousState = currentState, action) {
         text2: redoxChild2
     });*/
 
-    /*switch (action.type) {
+    /*switch (action.type) {       // This also works fine.
         case FIRST_ACTION : {
             // action.param
             console.log("RedoxChild1 text param " + action.text);
