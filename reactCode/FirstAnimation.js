@@ -29,16 +29,34 @@ export default class FirstAnimation extends Component {
             outputRange: [0.1, 0.5, 1]
         });
 
+        const position= {
+            transform: [
+                {
+                    translateX: this.state.firstAnim.interpolate({
+                        inputRange: [10, 50, 100],
+                        outputRange: [100, 200, 300]
+                    })
+                },
+                {
+                    translateY: this.state.firstAnim.interpolate({
+                        inputRange: [10, 50, 100],
+                        outputRange: [15, 20, 40]
+                    })
+                }
+            ]
+        };
+
+
         return (
             <View>
                 <Animated.View
-                    style={{width: this.state.firstAnim, height: this.state.firstAnim, backgroundColor: 'blue'}}>
-                    <Text style={{color:'green'}}>abc </Text>
+                    style={[{width: this.state.firstAnim, height: this.state.firstAnim, backgroundColor: 'blue'}, position]}>
 
                 </Animated.View>
 
                 <Animated.View style={{width: 50, height: 50, backgroundColor: 'red', opacity: alphaInterpolate}}/>
             </View>
+
         );
     }
 };
