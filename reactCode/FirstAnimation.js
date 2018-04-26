@@ -34,13 +34,41 @@ export default class FirstAnimation extends Component {
                 {
                     translateX: this.state.firstAnim.interpolate({
                         inputRange: [10, 50, 100],
-                        outputRange: [100, 200, 300]
+                        outputRange: [100, 200, 100]
                     })
                 },
                 {
                     translateY: this.state.firstAnim.interpolate({
                         inputRange: [10, 50, 100],
-                        outputRange: [15, 20, 40]
+                        outputRange: [15, 20, 15]
+                    })
+                }
+            ]
+        };
+
+        const rotate = {
+            transform: [
+                {
+                    rotateX: this.state.firstAnim.interpolate({
+                        inputRange: [10, 50, 100],
+                        outputRange: ['0deg', '180deg', '0deg']
+                    })
+                }
+            ]
+        };
+
+        const scale = {
+            transform: [
+                {
+                    scaleX: this.state.firstAnim.interpolate({
+                        inputRange: [10, 50, 100],
+                        outputRange: [1,0.5,1]
+                    })
+                },
+                {
+                    scaleY: this.state.firstAnim.interpolate({
+                        inputRange: [10, 50, 100],
+                        outputRange: [1,0.5,1]
                     })
                 }
             ]
@@ -55,6 +83,7 @@ export default class FirstAnimation extends Component {
                 </Animated.View>
 
                 <Animated.View style={{width: 50, height: 50, backgroundColor: 'red', opacity: alphaInterpolate}}/>
+                <Animated.View style={[{width: 50, height: 100, backgroundColor: 'green'}, rotate, scale ]}/>
             </View>
 
         );
