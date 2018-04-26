@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, TextInput, Button, Alert, Animated} from 'react-native';
+import {Text, View, TextInput, Button, Alert, Animated, Easing } from 'react-native';
 
 export default class FirstAnimation extends Component {
     static navigationOptions = {
@@ -18,9 +18,11 @@ export default class FirstAnimation extends Component {
     componentDidMount() {
         Animated.timing(this.state.firstAnim, {
             toValue: 100,
+            easing: Easing.bounce,  // easing is a function pass with bind
             duration: 2000
         }).start();
     }
+
 
 
     render(): * {
