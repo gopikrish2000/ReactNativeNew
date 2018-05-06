@@ -6,15 +6,17 @@ import {StackNavigator} from "react-navigation";
 import {Component} from "react";
 import RedoxStoreExample from './reactCode/RedoxStore';
 import FirstAnimation from "./reactCode/FirstAnimation";
+import NumberGameHome from "./reactCode/numberGame/numberGameHome";
 
 const navigationConst = StackNavigator({
         RedoxFirst : {screen: RedoxStoreExample},
         Home: {screen: SecondReactClass},
         FirstAnimation: {screen: FirstAnimation},
+        NumberGameHome: {screen: NumberGameHome},
         Profile: {screen: App}
     },
     {
-        initialRouteName: 'FirstAnimation'
+        initialRouteName: 'NumberGameHome'
     });
 
 

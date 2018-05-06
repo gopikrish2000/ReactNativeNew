@@ -1,0 +1,125 @@
+React Native
+
+Redux for state maintainance ( https://redux.js.org/ )
+
+@sk @sachinb @prashant @vishal @sivaraj  ( react devs in bangalore )
+
+
+************************************************************
+
+/*
+import React, {Component} from 'react';
+import {Text, View, StyleSheet, AppRegistry} from 'react-native';
+
+export default class FlexLayout extends Component {
+    render(): * {
+        return (
+            <View style={{flex: 1}}>
+                <View style={{flex:1, backgroundColor: '#0000FF'}}> </View>
+                <View style={{flex:2, backgroundColor: '#0000FF'}}> </View>
+                <View style={{flex:3, backgroundColor: '#0000FF'}}> </View>
+            </View>
+
+        );
+    }
+}*/
+
+
+/*style={{width: 500 , height: 300}} */
+
+
+************************************************************
+
+************************************************************Not working ************************************************************
+
+const navigationControlFlow = StackNavigator({
+    Home: {
+        screen: SecondReactClass
+    },
+    SecScreen: {
+        screen: FirstClass
+    }
+
+});
+
+
+************************************************************ To Learn ************************************************************
+
+1. State management across childs  ( change child state in parent ( using not preferred refs way ) & viceversa ( pass a function to child which will change parent state.) )
+5. Doing in seperate thread ...  ( have to use native code. )
+ . Navigation
+3. Redox useage of state
+4. Animations
+
+. iPhone settings.
+. Mixings ( TimerMixen ...)
+
+2. Database handling ( plugin is there.  https://github.com/andpor/react-native-sqlite-storage )
+. File System access( https://www.npmjs.com/package/react-native-filesystem )
+
+
+************************************************************ ************************************************************
+
+************************************************************iOS ************************************************************
+react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ./ios/release/main.jsbundle --assets-dest ./ios/release/main.jsbundle
+
+
+<key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+
+
+
+
+node node_modules/react-native/local-cli/cli.js bundle --entry-file='index.js' --bundle-output='./ios/untitled/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios
+
+
+alias recom='react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res'
+
+react-native bundle --platform ios --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/untitled/main.jsbundle --assets-dest ios/untitled/assets
+
+previous bundle identifier
+************************************************************ ************************************************************
+
+************************************************************ Flex box Information ************************************************************
+Parent Items:
+
+flex-direction	Specifies the direction of the flexible items inside a flex container
+justify-content	Horizontally aligns the flex items when the items do not use all available space on the main-axis
+align-items	Vertically aligns the flex items when the items do not use all available space on the cross-axis
+flex-wrap	Specifies whether the flex items should wrap or not, if there is not enough room for them on one flex line
+align-content	Modifies the behavior of the flex-wrap property. It is similar to align-items, but instead of aligning flex items, it aligns flex lines
+flex-flow	A shorthand property for flex-direction and flex-wrap
+
+
+Child Items::
+
+order
+flex-grow. ( like LinearLayout weight when Grown)
+flex-shrink ( like LinearLayout weight when Shinked)
+flex-basis. ( initial width/height of the item ; not useful)
+flex ( short hand notation: flex: 0 0 200px [ grow shink basis])
+align-self ( The align-self property specifies the alignment for the selected item inside the flexible container. The align-self property overrides the default alignment set by the container's align-items property. align-self: flex-start [ Cross Axis])
+
+
+margin: auto. // to take up the remaining space.  ( flex-grow , shink is ratio based , auto is full remaining space.)
+
+in flex box layout.
+<View style={{width: 50, height: 50, backgroundColor: 'skyblue', marginLeft :'auto' , marginRight: 'auto' }}/>  {/*to align in center use marginLeft n right to auto */}
+<View style={{width: 50, height: 50, backgroundColor: 'red', margin :'auto' }}/>  {/*to align in end use margin: auto*/}
+
+$$$$$$$ other ui things $$$$$$$
+
+https://www.w3schools.com/css/css_align.asp
+
+
+
+************************************************************ Flex box END ************************************************************
