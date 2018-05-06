@@ -90,6 +90,9 @@ previous bundle identifier
 ************************************************************ ************************************************************
 
 ************************************************************ Flex box Information ************************************************************
+flex:1, flexDirection:column -> given to any element then its height is 0px & its grows based on siblings [ similar to weight of LinearLayout]
+Parent Sibling1(flex: 1) Sibling2(flex: 4) then sibling2 occupies 4 times more area than Sibling1
+
 Parent Items:
 
 flex-direction	Specifies the direction of the flexible items inside a flex container
@@ -119,6 +122,9 @@ in flex box layout.
 $$$$$$$ other ui things $$$$$$$
 
 https://www.w3schools.com/css/css_align.asp
+
+position: relative; left: -30px;  // relative to ITS ORIGINAL position , n values to change are top , left, right , bottom
+
 
 
 

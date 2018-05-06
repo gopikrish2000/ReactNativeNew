@@ -4,7 +4,7 @@ import {Text, View,Dimensions, TextInput, Button, Alert, Animated, Easing, Touch
 
 export default class LayoutExample extends Component {
 
-    functionToExecute = 3;
+    functionToExecute = 4;
     constructor(props) {
         super(props);
     }
@@ -33,7 +33,7 @@ export default class LayoutExample extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.component1}>
-                    <Text>Right</Text>
+                    <Text>First</Text>
                 </View>
                 <View style={styles.component2}>
                     <Text style={{ }}>Center Component1</Text>
@@ -56,7 +56,7 @@ export default class LayoutExample extends Component {
         return (
             <View style={{position:'relative', width:lWidth, height: lHeight}}>
                 <View style={{position: 'absolute', top: 0 , left: 0}}>
-                    <Text>Right</Text>
+                    <Text>First</Text>
                 </View>
                 <View style={{position: 'absolute', top: 0 , right: 0}}>
                     <Text style={{ }}>Center Component1</Text>
@@ -73,6 +73,29 @@ export default class LayoutExample extends Component {
         );
     }
 
+    fourthExample(){ // align 4 elements across 4 corners topLeft , topRight , BottomLeft , BottomRight ;
+                    // for this the parent Width, Height should be given & position: relative
+        return (
+            <View style={{height:400}}>
+            <View style={{flex:1, flexDirection: 'row', height:50 , width:200 }}>
+                {/* the ones with flex not present inside flex parent will first be drawn then remaining space is divided.*/}
+                <View style={{width: 100,   backgroundColor:'blue'}}>
+                    <Text>First</Text>
+                </View>
+                <View style={{flex: 2 , backgroundColor:'red'}}>
+
+                </View>
+                <View style={{flex: 3, backgroundColor:'green'}}>
+
+                </View>
+                <View style={{flex: 4, backgroundColor:'orange'}}>
+                </View>
+            </View>
+            </View>
+        );
+    }
+
+
     render(){
         if(this.functionToExecute === 1){
             return this.firstExample();
@@ -80,6 +103,8 @@ export default class LayoutExample extends Component {
             return this.secondExample();
         } else if ( this.functionToExecute === 3){
             return this.thirdExample();
+        } else if ( this.functionToExecute === 4){
+            return this.fourthExample();
         }
     }
 };
