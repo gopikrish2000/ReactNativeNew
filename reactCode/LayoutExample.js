@@ -4,7 +4,7 @@ import {Text, View,Dimensions, TextInput, Button, Alert, Animated, Easing, Touch
 
 export default class LayoutExample extends Component {
 
-    functionToExecute = 1;
+    functionToExecute = 5;
     constructor(props) {
         super(props);
     }
@@ -96,6 +96,31 @@ export default class LayoutExample extends Component {
         );
     }
 
+    fifthExample(){ // complex layout.
+                    //
+        return (
+            <View style={{height:400}}>
+            <View style={{flex:1, flexDirection: 'row' }}>
+                {/* the ones with flex not present inside flex parent will first be drawn then remaining space is divided.*/}
+                <View style={{ flex:1, flexDirection:'column',  justifyContent:'center'}}>
+                    <View style={[{backgroundColor:'orange'}, styles.boxStyle ]} />
+                </View>
+                <View style={{flex: 5, flexDirection: 'column',  justifyContent:'space-between',}}>
+                    <View style={[{ backgroundColor:'orange', alignSelf:'center' }, styles.boxStyle ]} />
+                    <View style={[{ backgroundColor:'pink' , height: 60, } ]} />
+                    <View style={[{ backgroundColor:'orange', alignSelf:'center'  }, styles.boxStyle ]} />
+
+
+                </View>
+                <View style={{ flex:1, flexDirection:'column',  justifyContent:'center'}}>
+                    <View style={[{backgroundColor:'blue' }, styles.boxStyle ]} />
+                </View>
+
+            </View>
+            </View>
+        );
+    }
+
 
     render(){
         if(this.functionToExecute === 1){
@@ -106,11 +131,17 @@ export default class LayoutExample extends Component {
             return this.thirdExample();
         } else if ( this.functionToExecute === 4){
             return this.fourthExample();
+        } else if ( this.functionToExecute === 5){
+            return this.fifthExample();
         }
     }
 };
 
 var styles = StyleSheet.create({
+    boxStyle: {
+      width:60,
+      height:60
+    },
     container: {
         flexDirection:'row',
         flex:1,
