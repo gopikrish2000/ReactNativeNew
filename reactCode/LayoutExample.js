@@ -106,14 +106,20 @@ export default class LayoutExample extends Component {
                     <View style={[{backgroundColor:'orange'}, styles.boxStyle ]} />
                 </View>
                 <View style={{flex: 5, flexDirection: 'column',  justifyContent:'space-between',}}>
-                    <View style={[{ backgroundColor:'orange', alignSelf:'center' }, styles.boxStyle ]} />
-                    <View style={[{ backgroundColor:'pink' , height: 60, } ]} />
-                    <View style={[{ backgroundColor:'orange', alignSelf:'center'  }, styles.boxStyle ]} />
+                    <View style={[{ backgroundColor:'black', alignSelf:'center' }, styles.boxStyle ]} />
+                    <View style={[{ backgroundColor:'pink' , height: 60, marginLeft:20, marginRight:20 } ]} />
+                    <View style={[{ backgroundColor:'green', alignSelf:'center'  }, styles.boxStyle ]} >
+                        <View style={{flex:1, flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+                        <View style={[{backgroundColor:'red' }, styles.smallBoxStyle]} />
+                        </View>
+                    </View>
 
 
                 </View>
                 <View style={{ flex:1, flexDirection:'column',  justifyContent:'center'}}>
-                    <View style={[{backgroundColor:'blue' }, styles.boxStyle ]} />
+                    <View style={[{backgroundColor:'blue', justifyContent:'center', alignItems:'center'  }, styles.boxStyle ]} >
+                        <View style={[{backgroundColor:'red'}, styles.smallBoxStyle]} />
+                    </View>
                 </View>
 
             </View>
@@ -138,6 +144,10 @@ export default class LayoutExample extends Component {
 };
 
 var styles = StyleSheet.create({
+    smallBoxStyle: {
+        width:20,
+        height:20
+    },
     boxStyle: {
       width:60,
       height:60
