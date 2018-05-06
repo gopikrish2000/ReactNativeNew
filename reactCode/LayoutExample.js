@@ -4,7 +4,7 @@ import {Text, View,Dimensions, TextInput, Button, Alert, Animated, Easing, Touch
 
 export default class LayoutExample extends Component {
 
-    functionToExecute = 4;
+    functionToExecute = 1;
     constructor(props) {
         super(props);
     }
@@ -19,8 +19,9 @@ export default class LayoutExample extends Component {
                     alignItems:'center',
                 }}>
                     <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}}/>
-                    {/*to align in center use marginLeft n right to auto */}
+                    {/*to align in center in remaining space ( until next element is put) use marginLeft n right to auto*/}
                     <View style={{width: 50, height: 50, backgroundColor: 'skyblue', marginLeft :'auto' , marginRight: 'auto' }}/>
+                    <View style={{width: 50, height: 50, backgroundColor: 'green' }}/>
                     {/*to align in end use margin: auto*/}
                     <View style={{width: 50, height: 50, backgroundColor: 'red', margin :'auto' }}/>
 
