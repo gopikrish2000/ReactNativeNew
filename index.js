@@ -21,7 +21,7 @@ const navigationConst = StackNavigator({
         Profile: {screen: App}
     },
     {
-        initialRouteName: 'LayoutExample'
+        initialRouteName: 'NumberGameHome'
     });
 
 
