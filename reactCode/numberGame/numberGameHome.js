@@ -23,7 +23,16 @@ export default class NumberGameHome extends Component {
     }
 
     fetchFromNetwork() {
-        fetch("https://facebook.github.io/react-native/movies.json").then((response) => response.json()).then((jsonObj) => jsonObj["movies"]).then((json) => {
+        fetch("https://api.flickr.com/services/feeds/photos_public.gne?format=json")
+            .then((response) => response.text())
+            .then((responseText) => {
+                // const match = responseText.match(/jsonFlickrFeed\((.*)\);/);
+                // if (! match) throw new Error('invalid JSONP response');
+                const responseFinal = responseText.substring(15, responseText.lastIndexOf(")"));
+                return JSON.parse(responseFinal).items;
+            })
+            //.then((response) => response.json()).then((jsonObj) => jsonObj["movies"])
+            .then((json) => {
             // console.log(" json is " + json);
             this.setState({
                 dataList: json
@@ -50,8 +59,7 @@ export default class NumberGameHome extends Component {
 
                 <View>
                     <FlatList data={this.state.dataList} keyExtractor={(item, index) => index + ""}
-                              renderItem={({item}) => <Text> movie tilte is {item.title} , release year
-                                  is {item.releaseYear} </Text>}
+                              renderItem={({item}) => <Text> item tilte is {item.title} , link year is {item.link} </Text>}
                     />
 
                 </View>
