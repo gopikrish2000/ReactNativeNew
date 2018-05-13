@@ -27,7 +27,7 @@ export default class NumberGameHome extends Component {
             .then((response) => response.text())
             .then((responseText) => {
                 const responseFinal = responseText.substring(15, responseText.lastIndexOf(")"));
-                return JSON.parse(responseFinal).items;
+                return JSON.parse(responseFinal).items.slice(0,9);
             })
             .then((json) => {
             // console.log(" json is " + json);
@@ -50,18 +50,20 @@ export default class NumberGameHome extends Component {
                      <View style={{ backgroundColor:'blue', height: 40, width:40 , borderRadius:20, }}>
                         <View style={{flex:1, justifyContent: 'center'}}>
                             <Text style={{color:'red', fontSize:20, alignSelf:'center'}}> {this.state.counDownIndex} </Text>
+
                         </View>
                     </View>
                 </View>
 
-                <View>
-                    <FlatList data={this.state.dataList} keyExtractor={(item, index) => index + ""}
+                <View style={{}}>
+                    <FlatList contentContainerStyle ={{flexDirection:'row', flexWrap:'wrap', margin: 6, justifyContent:'center'}}
+                        data={this.state.dataList} keyExtractor={(item, index) => index + ""}
                               renderItem={({item}) => {
                                   return <Image
-                                      source={{uri: 'https://i.chzbgr.com/full/7345954048/h7E2C65F9/'}}
-                                      style={{width: 200, height: 200}}/>
-                              }
-                              }
+                                      style={{width: 100, height: 100, margin:6}}
+                                      source={{uri: item.media.m}}
+                                  />
+                              }}
                     />
                 </View>
             </View>
