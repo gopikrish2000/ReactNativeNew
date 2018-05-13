@@ -52,6 +52,13 @@ export default class NumberGameHome extends Component {
         });
     }
 
+    onPressItem(item) {
+        item.showImage = true;
+        setTimeout(function () {
+            item.showImage = false;
+        }.bind(this), 1000);
+    }
+
     render(): * {
         const pinkOpacity = this.state.counDownIndex <= 0 ? 0 : 1;
         return (
@@ -71,7 +78,7 @@ export default class NumberGameHome extends Component {
                         data={this.state.dataList} keyExtractor={(item, index) => index + ""}
                               renderItem={({item}) => {
                                   const itemUrl = item.showImage ? item.media.m : ("https://dummyimage.com/600x400/db28db/fff&text=" + (item.index+1));
-                                  return <Image
+                                  return <Image onPress={this.onPressItem.bind(item, this)}
                                       style={{width: 100, height: 100, margin:6}}
                                       source={{uri: itemUrl}}
                                   />
