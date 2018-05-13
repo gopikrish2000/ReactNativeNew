@@ -17,7 +17,13 @@ export default class NumberGameHome extends Component {
                 return;
             }
             this.setState(previous => {
-                return {counDownIndex: previous.counDownIndex - 1};
+                if (previous.counDownIndex === 1) {
+                    previous.dataList.forEach((item, index) => {
+                        item["showImage"] = false;
+                    });
+                }
+                return {counDownIndex: previous.counDownIndex - 1,
+                dataList: previous.dataList };
             });
         }.bind(this), 1000);
     }
@@ -27,7 +33,11 @@ export default class NumberGameHome extends Component {
             .then((response) => response.text())
             .then((responseText) => {
                 const responseFinal = responseText.substring(15, responseText.lastIndexOf(")"));
-                return JSON.parse(responseFinal).items.slice(0,9);
+                var itemList = JSON.parse(responseFinal).items.slice(0,9);
+                itemList.forEach( (item, index) => {
+                    item.showImage = true;
+                });
+                return itemList;
             })
             .then((json) => {
             // console.log(" json is " + json);
@@ -59,9 +69,10 @@ export default class NumberGameHome extends Component {
                     <FlatList contentContainerStyle ={{flexDirection:'row', flexWrap:'wrap', margin: 6, justifyContent:'center'}}
                         data={this.state.dataList} keyExtractor={(item, index) => index + ""}
                               renderItem={({item}) => {
+                                  const itemUrl = item.showImage ? item.media.m : "https://dummyimage.com/100x100/9e419e/fff";
                                   return <Image
                                       style={{width: 100, height: 100, margin:6}}
-                                      source={{uri: item.media.m}}
+                                      source={{uri: itemUrl}}
                                   />
                               }}
                     />
