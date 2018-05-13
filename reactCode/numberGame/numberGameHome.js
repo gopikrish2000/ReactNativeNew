@@ -33,9 +33,10 @@ export default class NumberGameHome extends Component {
             .then((response) => response.text())
             .then((responseText) => {
                 const responseFinal = responseText.substring(15, responseText.lastIndexOf(")"));
-                var itemList = JSON.parse(responseFinal).items.slice(0,9);
+                let itemList = JSON.parse(responseFinal).items.slice(0, 9);
                 itemList.forEach( (item, index) => {
                     item.showImage = true;
+                    item.index = index;
                 });
                 return itemList;
             })
@@ -69,7 +70,7 @@ export default class NumberGameHome extends Component {
                     <FlatList contentContainerStyle ={{flexDirection:'row', flexWrap:'wrap', margin: 6, justifyContent:'center'}}
                         data={this.state.dataList} keyExtractor={(item, index) => index + ""}
                               renderItem={({item}) => {
-                                  const itemUrl = item.showImage ? item.media.m : "https://dummyimage.com/100x100/9e419e/fff";
+                                  const itemUrl = item.showImage ? item.media.m : ("https://dummyimage.com/600x400/db28db/fff&text=" + (item.index+1));
                                   return <Image
                                       style={{width: 100, height: 100, margin:6}}
                                       source={{uri: itemUrl}}
