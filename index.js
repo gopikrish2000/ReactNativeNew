@@ -26,6 +26,5 @@ const navigationConst = StackNavigator({
         initialRouteName: 'NumberGameHome'
     });
 
-
-
+console.disableYellowBox = true;
 AppRegistry.registerComponent('untitled', () => navigationConst);
