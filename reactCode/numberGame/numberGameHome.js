@@ -103,14 +103,16 @@ export default class NumberGameHome extends Component {
 
 
     render(): * {
-        const pinkOpacity = this.state.counDownIndex <= 0 ? 0 : 1;
+        const showFirstItem = this.state.counDownIndex <= 0;
+        // const pinkOpacity = showFirstItem ? 0 : 1;
         var currentItemUrl = "";
         try{
             currentItemUrl = this.state.currentItem.media.m  }
         catch (e) {}
         return (
             <View style={{flex:1, flexDirection:'column', justifyContent:'flex-start'  }}>
-                <View style={{opacity:pinkOpacity , flexDirection:'row', marginLeft:40, marginTop:20, marginBottom:30}}>
+
+                { !showFirstItem && <View style={{ flexDirection:'row', marginLeft:40, marginTop:20, marginBottom:30}}>
                     <Text>Game start in countdown of </Text>
                      <View style={{ backgroundColor:'blue', height: 40, width:40 , borderRadius:20, }}>
                         <View style={{flex:1, justifyContent: 'center'}}>
@@ -118,9 +120,9 @@ export default class NumberGameHome extends Component {
 
                         </View>
                     </View>
-                </View>
+                </View> }
 
-                <View style={{opacity:pinkOpacity===0?1:0 ,flexDirection: 'row', marginBottom:30, marginLeft:40, marginRight:40}}>
+                { showFirstItem && <View style={{flexDirection: 'row', marginBottom:30, marginLeft:40, marginRight:40, marginTop:20}}>
                     <Text>Moves {this.state.noOfAttempts} </Text>
                     {/*<Text style={{ marginLeft:'auto', marginRight:'auto'}}>Middle</Text>*/}
                     <Image
@@ -128,7 +130,7 @@ export default class NumberGameHome extends Component {
                         source={{uri: currentItemUrl}}
                     />
                     <Text style={{color:'green', margin:'auto'}}>Correct {this.state.noOfCorrect} </Text>
-                </View>
+                </View> }
 
                 <View style={{}}>
                     <FlatList contentContainerStyle ={{flexDirection:'row', flexWrap:'wrap',  margin: 6, justifyContent:'center'}}
