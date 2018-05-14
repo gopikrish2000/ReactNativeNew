@@ -6,7 +6,7 @@ export default class NumberGameHome extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {counDownIndex: 15, dataList:[]};
+        this.state = {counDownIndex: 15, dataList:[], noOfAttempts:0, noOfCorrect:0, currentItem:{}};
     }
 
     componentDidMount(){
@@ -75,6 +75,10 @@ export default class NumberGameHome extends Component {
         }.bind(this), 2000);
     }
 
+    gameLogicHandler() {
+
+    }
+
     render(): * {
         const pinkOpacity = this.state.counDownIndex <= 0 ? 0 : 1;
         return (
@@ -87,6 +91,16 @@ export default class NumberGameHome extends Component {
 
                         </View>
                     </View>
+                </View>
+
+                <View style={{opacity:pinkOpacity===0?1:0 ,flexDirection: 'row', marginBottom:30, marginLeft:40, marginRight:40}}>
+                    <Text>Moves {this.state.noOfAttempts} </Text>
+                    {/*<Text style={{ marginLeft:'auto', marginRight:'auto'}}>Middle</Text>*/}
+                    <Image
+                        style={{width: 100, height: 100, marginLeft:'auto', marginRight:'auto'}}
+                        source={{uri: this.state.currentItem.media.m}}
+                    />
+                    <Text style={{color:'green', margin:'auto'}}>Correct {this.state.noOfCorrect} </Text>
                 </View>
 
                 <View style={{}}>
