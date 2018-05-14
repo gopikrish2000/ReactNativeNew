@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View,FlatList,Image, TextInput, Button, Alert, Animated, Easing, TouchableHighlight} from 'react-native';
+import {Text, View,FlatList,Image, TextInput, Button, Alert, Animated, Easing,TouchableOpacity, TouchableHighlight} from 'react-native';
 
 
 export default class NumberGameHome extends Component {
@@ -53,10 +53,26 @@ export default class NumberGameHome extends Component {
     }
 
     onPressItem(item) {
-        item.showImage = true;
+        let dataListAry = this.state.dataList;
+        dataListAry.forEach((itemEach, index) => {
+            if (itemEach.index === item.index) {
+                itemEach.showImage = true;
+            }
+        });
+        this.setState( (previous) => {
+            return {dataList: dataListAry};
+        });
         setTimeout(function () {
-            item.showImage = false;
-        }.bind(this), 1000);
+            let dataListAryNew = this.state.dataList;
+            dataListAryNew.forEach((itemEach, index) => {
+                if (itemEach.index === item.index) {
+                    itemEach.showImage = false;
+                }
+            });
+            this.setState( (previous) => {
+                return {dataList: dataListAryNew};
+            });
+        }.bind(this), 2000);
     }
 
     render(): * {
@@ -74,14 +90,19 @@ export default class NumberGameHome extends Component {
                 </View>
 
                 <View style={{}}>
-                    <FlatList contentContainerStyle ={{flexDirection:'row', flexWrap:'wrap', margin: 6, justifyContent:'center'}}
+                    <FlatList contentContainerStyle ={{flexDirection:'row', flexWrap:'wrap',  margin: 6, justifyContent:'center'}}
                         data={this.state.dataList} keyExtractor={(item, index) => index + ""}
                               renderItem={({item}) => {
                                   const itemUrl = item.showImage ? item.media.m : ("https://dummyimage.com/600x400/db28db/fff&text=" + (item.index+1));
-                                  return <Image onPress={this.onPressItem.bind(item, this)}
-                                      style={{width: 100, height: 100, margin:6}}
-                                      source={{uri: itemUrl}}
-                                  />
+                                  return <View>
+                                      <TouchableOpacity onPress={this.onPressItem.bind(this, item)}>
+                                          <Image
+                                              style={{width: 100, height: 100, margin: 6}}
+                                              source={{uri: itemUrl}}
+                                          />
+                                      </TouchableOpacity>
+                                  </View>
+
                               }}
                     />
                 </View>
