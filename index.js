@@ -9,6 +9,7 @@ import FirstAnimation from "./reactCode/FirstAnimation";
 import NumberGameHome from "./reactCode/numberGame/numberGameHome";
 import QuickSampleTest from "./reactCode/QuickSampleTest";
 import LayoutExample from "./reactCode/LayoutExample";
+import NumberGameEnd from "./reactCode/numberGame/numberGameEnd";
 
 
 const navigationConst = StackNavigator({
@@ -18,7 +19,8 @@ const navigationConst = StackNavigator({
         NumberGameHome: {screen: NumberGameHome},
         QuickSampleTest: {screen: QuickSampleTest},
         LayoutExample: {screen: LayoutExample},
-        Profile: {screen: App}
+        Profile: {screen: App},
+        NumberGameEnd: {screen: NumberGameEnd}
     },
     {
         initialRouteName: 'NumberGameHome'

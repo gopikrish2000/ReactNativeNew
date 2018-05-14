@@ -86,7 +86,7 @@ export default class NumberGameHome extends Component {
 
     gameLogicHandler() {
         if(this.choosenNumbersAry.length <=0 ) {
-            alert("game over");
+            this.props.navigation.navigate('NumberGameEnd', {attemptCount: this.state.noOfAttempts});
             return;
         }
         let numIndex = Math.floor((Math.random() * (this.choosenNumbersAry.length - 1)));
