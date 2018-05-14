@@ -122,7 +122,10 @@ class MyListView extends Component {
     }
 }
 
+/* lifecycle CREATION order is  componentWillMount -> Render -> componentDidMount -> componentWillUnmount ( when destroyed)
 
+*  lifecycle UPDATION order is  shouldComponentUpdate -> componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> Render -> componentDidUpdate
+* */
 class MyLongRunningTask extends Component {
 
     constructor(props) {
