@@ -7,6 +7,7 @@ export default class NumberGameHome extends Component {
     constructor(props) {
         super(props);
         this.state = {counDownIndex: 15, dataList:[], noOfAttempts:0, noOfCorrect:0, currentItem:{}};
+        this.choosenNumbersAry = [0,1,2,3,4,5,6,7,8];
     }
 
     componentDidMount(){
@@ -25,6 +26,9 @@ export default class NumberGameHome extends Component {
                 return {counDownIndex: previous.counDownIndex - 1,
                 dataList: previous.dataList };
             });
+            if (this.state.counDownIndex === 1) {
+                this.gameLogicHandler();
+            }
         }.bind(this), 1000);
     }
 
@@ -59,8 +63,10 @@ export default class NumberGameHome extends Component {
                 itemEach.showImage = true;
             }
         });
+        const isCorrect = this.state.currentItem.index === item.index ? 1 : 0;
         this.setState( (previous) => {
-            return {dataList: dataListAry};
+            return {dataList: dataListAry, noOfAttempts: previous.noOfAttempts +1 ,
+            noOfCorrect: previous.noOfCorrect + isCorrect };
         });
         setTimeout(function () {
             let dataListAryNew = this.state.dataList;
@@ -73,14 +79,35 @@ export default class NumberGameHome extends Component {
                 return {dataList: dataListAryNew};
             });
         }.bind(this), 2000);
+        if(isCorrect === 1){
+            this.gameLogicHandler();
+        }
     }
 
     gameLogicHandler() {
-
+        if(this.choosenNumbersAry.length <=0 ) {
+            alert("game over");
+            return;
+        }
+        let numIndex = Math.floor((Math.random() * (this.choosenNumbersAry.length - 1)));
+        let value = this.choosenNumbersAry[numIndex];
+        if (numIndex > -1) {
+            this.choosenNumbersAry.splice(numIndex, 1);
+        }
+        let choosenElem = this.state.dataList[value];
+        this.setState( (previous) => {
+            return {currentItem: choosenElem};
+        })
     }
+
+
 
     render(): * {
         const pinkOpacity = this.state.counDownIndex <= 0 ? 0 : 1;
+        var currentItemUrl = "";
+        try{
+            currentItemUrl = this.state.currentItem.media.m  }
+        catch (e) {}
         return (
             <View style={{flex:1, flexDirection:'column', justifyContent:'flex-start'  }}>
                 <View style={{opacity:pinkOpacity , flexDirection:'row', marginLeft:40, marginTop:20, marginBottom:30}}>
@@ -98,7 +125,7 @@ export default class NumberGameHome extends Component {
                     {/*<Text style={{ marginLeft:'auto', marginRight:'auto'}}>Middle</Text>*/}
                     <Image
                         style={{width: 100, height: 100, marginLeft:'auto', marginRight:'auto'}}
-                        source={{uri: this.state.currentItem.media.m}}
+                        source={{uri: currentItemUrl}}
                     />
                     <Text style={{color:'green', margin:'auto'}}>Correct {this.state.noOfCorrect} </Text>
                 </View>
