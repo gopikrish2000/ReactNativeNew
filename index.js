@@ -10,6 +10,7 @@ import NumberGameHome from "./reactCode/numberGame/numberGameHome";
 import QuickSampleTest from "./reactCode/QuickSampleTest";
 import LayoutExample from "./reactCode/LayoutExample";
 import NumberGameEnd from "./reactCode/numberGame/numberGameEnd";
+import TouchHandling from "./reactCode/concepts/TouchHandling";
 
 
 const navigationConst = StackNavigator({
@@ -20,10 +21,11 @@ const navigationConst = StackNavigator({
         QuickSampleTest: {screen: QuickSampleTest},
         LayoutExample: {screen: LayoutExample},
         Profile: {screen: App},
-        NumberGameEnd: {screen: NumberGameEnd}
+        NumberGameEnd: {screen: NumberGameEnd},
+        TouchHandling: {screen: TouchHandling}
     },
     {
-        initialRouteName: 'NumberGameHome'
+        initialRouteName: 'TouchHandling'
     });
 
 console.disableYellowBox = true;
