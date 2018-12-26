@@ -25,7 +25,7 @@ const navigationConst = StackNavigator({
         TouchHandling: {screen: TouchHandling}
     },
     {
-        initialRouteName: 'TouchHandling'
+        initialRouteName: 'NumberGameHome'
     });
 
 console.disableYellowBox = true;
